@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cribin</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/form.css" rel="stylesheet">
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!--  LINK WITH ANGULAR JS -->
+    <script type ="text/javascript" src="../js/angular.min.js"></script>
+    <script type  ="text/javascript" src="../js/createAccount1.js"></script>
+
+
+
+
+    <!-- Custom styles for this template -->
+    <link href="../css/home.css" rel="stylesheet">
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+    <div class="navbar-wrapper">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="home.html">Cribin</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="home.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>    
+    </div>
+<!-- NAVBAR
+================================================== -->
+    <div ng-app="sample">
+    <br>
+    <br>
+    <br>
+    
+      <div class="container">
+        <div class="row">
+            <form class="col-md-8 col-md-offset-2" name="registerForm">
+                <legend>Registration</legend>
+                <center>
+                    <legend >My preferences</legend>
+                </center>
+                        
+                        <div class="col-md-12">
+                            <label for="">Location</label> <br>
+                            <input type="text" class="form-control" name="location" id="location" required ng-model="location">
+                            <br>
+                        
+                            <div class = "form-group col-md-6">
+                                <label for="">Minimum number of Cribmates</label> <br>
+                                <input type="number" class="form-control" name="minNumberCribmates" id="minNumberCribmates" required ng-model="minNumberCribmates" min="1">
+                            </div>
+                            <div class = "form-group col-md-6">
+                                <label for="">Maximum number of Cribmates</label> <br>
+                                <input type="number" class="form-control" name="maxNumberCribmates" id="maxNumberCribmates" required ng-model="maxNumberCribmates" min={{minNumberCribmates}}>
+                            </div>
+                            <div class = "form-group col-md-6">
+                                <label for="">Minimum Price</label> <br>
+                                <input type="number" class="form-control" name="minPrice" id="minPrice" required ng-model="minPrice" min="0">
+                            </div>
+                            <div class = "form-group col-md-6">
+                                <label for="">Maximum Price</label> <br>
+                                <input type="number" class="form-control" name="maxPrice" id="maxPrice" required ng-model="maxPrice" min={{minPrice}}>
+                            </div>
+                        </div>
+                       
+
+                        <label for="facilities">Facilities</label>
+
+                            <div class="col-md-12 radio">
+                                <label class="checkbox" for="shy">
+                                    <input type="checkbox" name="facilities" ng-model=facilities.wifi id="wifi" value="wifi"> Wifi
+                                </label>
+                                <label class="checkbox" for="facilities">
+                                    <input type="checkbox" name="facilities" ng-model=facilities.bathroom id="bathroom" value="bathroom"> Private bathroom
+                                </label>
+                                <label class="checkbox" for="facilities">
+                                    <input type="checkbox" name="facilities" ng-model=facilities.furnished id="furnished" value="furnished"> Furnished room
+                                </label>
+                                <label class="checkbox" for="facilities">
+                                    <input type="checkbox" name="facilities" ng-model=facilities.wifi id="garden" value="garden"> Garden
+                                </label>
+                                <label class="checkbox" for="facilities">
+                                    <input type="checkbox" name="facilities" ng-model=facilities.pool id="pool" value="pool"> Swimming pool
+                                </label>
+                                <div class="col-md-6">
+                                <label for="other">Other, please specify</label>
+                                <input type="text" class="form-control" name="location" ng-model=facilities.other id="location">
+                                <br>
+                                </div>  
+
+
+                            </div>
+                    </div>
+                
+                   
+                    <center>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input onClick="window.location.href='browse.html'" class="btn btn-danger" value="Let's find my crib!" role="button"  ng-disabled="registerForm.$invalid" />
+                                <br>
+                            </div>
+                        </div>
+                    </center>
+                </div>
+                
+       
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,9 @@
+{% if latest_cribs %}
+    <ul>
+    {% for crib in latest_cribs %}
+        <li><a href="/cribs/{{ crib.id }}/">{{ crib.address }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No cribs are available.</p>
+{% endif %}

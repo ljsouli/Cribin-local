@@ -1,0 +1,284 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Cribin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'cribs/css/bootstrap.css'%}" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="//storage.googleapis.com/vrview/2.0/build/vrview.min.js"></script>
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'cribs/css/browse.css' %}" rel="stylesheet">
+
+
+
+  </head>
+<!-- NAVBAR
+================================================== -->
+  <body>
+
+    <div class="navbar-wrapper "col-lg-12"">
+      <div class="container">
+
+        <nav class="navbar navbar-inverse navbar-static-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Cribin</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="../home.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+      </div>
+    </div>
+    
+
+
+    <!-- Carousel
+    ================================================== -->
+<div class="container">
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <legend> Room at {{crib.address}}</legend>
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="100000">
+    <!-- Indicators -->
+
+ <!-- Remettre
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+-->
+    <!-- Wrapper for slides WARNING: We repeat twice the first img-->
+
+    <div class="carousel-inner" role="listbox">
+      
+      {% for crib in crib_images %}
+        <div class="item">
+                <img src= {{crib.image.url|cut:"cribs"}}  width="460" height="345"> 
+                
+        </div>
+      
+      {% endfor %}
+      {% for room in room_images %}
+      <div class="item">
+              <img src= {{room.image.url|cut:"cribs"}}  width="460" height="345">   
+      </div>
+      {% endfor %}
+
+
+      <div class="item active" style="text-align: center; background : #FFFFFF;">
+  
+<iframe src="https://www.google.com/maps/embed?pb=!1m0!3m2!1sfr!2sus!4v1494621609205!6m8!1m7!1sF%3A-2lHL0XL4pLk%2FWRYdCJdgmLI%2FAAAAAAAAANM%2Fes7EuaRWjUQd6r8dPRYfRvPUWCqjcpHrACLIB!2m2!1d50.3040193!2d7.558450299999999!3f61!4f0!5f0.7820865974627469" width="1000" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+
+    <center>
+      <p>
+         <br>
+         <a href="/next_crib/">
+         <img class=" icon-pictures"  src="{% static 'cribs/icons/like.png' %}"   width="80" height="80"> 
+         </a>
+          {% with mail="mailto:"|add:host.email %} 
+            <a class="btn-danger btn-lg col-lg-offset-2"  href={{mail|add:"?subject=IWantThisCrib!"}} role="button">I want this Crib!</a>
+         {% endwith %}  
+         <a href="/next_crib/">
+         <img class=" icon-pictures col-lg-offset-2" href="/next_crib/" src="{% static 'cribs/icons/dislike.png' %}"  width="80" height="80"> 
+         </a>
+      </p>
+    </center>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+     <!-- <img class=" icon-pictures col-lg-offset-1" src="{% static 'cribs/icons/like.png' %}"   width="80" height="80"> -->
+    </a>
+
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+     <!-- <img class=" icon-pictures col-lg-offset-1" src="{% static 'cribs/icons/dislike.png' %}"  width="80" height="80"> -->
+    </a>
+
+  </div>
+</div>
+
+<div class="container marketing">
+      <br>
+      <br>
+      <br>
+      <br>
+      <!-- Three columns of text below the carousel -->
+       <legend>Cribmates</legend>
+
+
+        <div class="col-lg-12">
+            <div class="row">
+              
+                {% for guest in guests_list %}
+              <!--  <img src= {{crib.image.url|cut:"cribs"}}  width="460" height="345"> -->
+                  <div class="item col-lg-3">
+                      {% with mail="mailto:"|add:guest.email %} 
+                        <a href={{mail|add:"?subject=Cribin:"}}>
+                          <img class="img-circle profil-pictures" src={{guest.image.url|cut:"cribs"}}  width="140" height="140"> 
+                        </a> 
+                      {% endwith %}     
+                  </div>
+                {% endfor %}
+
+          <!-- <img class="img-circle profil-pictures" src="{% static 'cribs/images/Basile.jpg' %}"  width="140" height="140"> 
+          <br>
+           <ul>
+              <li>Tennis</li>
+              <li>Travelling</li>
+              <li>Master in Management</li>
+            </ul> -->
+        </div>
+        <!--
+        <div class="col-lg-4">
+          <img class="img-circle profil-pictures" src="{% static 'cribs/images/Ioana.jpg' %}" width="140" height="140">
+         
+            <ul>
+              <li>Drawing</li>
+              <li>Fashion</li>
+              <li>Master in Law</li>
+            </ul> 
+        </div>
+        <div class="col-lg-4">
+          <img class="img-circle profil-pictures" src="{% static 'cribs/images/Solaiman.jpg' %}" width="140" height="140">
+          <br>
+          <ul>
+              <li>Kick-boxing</li>
+              <li>Travelling</li>
+              <li>Master in Computer Science</li>
+          </ul>
+
+        </div>
+      </div>  -->
+      <legend>About the Crib</legend>
+
+      <blockquote>
+
+        <p>
+          {{crib.description}}
+        </p>
+
+      </blockquote>
+      
+
+      <div class="col-lg-6 bottom-three">
+        <legend>About us</legend>
+          {% for crib_hobby in crib_hobbies %}
+              <img class="icon-pictures col-lg-offset-1" src={{crib_hobby.icon.url|cut:"cribs"}} title={{crib_hobby.code}} width="80" height="80"> 
+          {% endfor %}
+        <br>
+      </div>
+
+      <div class="col-lg-6">
+        <legend>Facilities</legend>
+        <div class="col-spaced">
+          {% for equipment_image in equipments_images %}
+              <img class="icon-pictures col-lg-offset-1" src={{equipment_image.icon.url|cut:"cribs"}} title={{equipment_image.description}} width="80" height="80"> 
+          {% endfor %}
+        </div>
+
+      </div>
+  <div class="col-lg-12">
+     <legend class = "bottom-three">Crib reviews</legend>
+        <div class="container bootstrap snippet">
+            <div class="row">
+                
+              <div class="col-md-10 col-md-offset-1">
+              <div class="row testimonials">
+
+                {% for review in reviews %}
+                  <div class="col-sm-4">
+                    <blockquote>
+                      <p class="clients-words">{{review.description}}</p>
+                      <span class="clients-name">{{review.guest}}</span>
+                      <img class="img-circle img-thumbnail" src={{review.guest.image.url|cut:"cribs"}}>
+                    </blockquote>
+                  </div>           
+                {% endfor %}
+
+              </div><!--/.row-->
+            </div><!--/.col-->  
+          </div><!--/.row-->
+        </div>
+      
+      <div class="buttonHolder">
+        <p>
+           <br>
+
+          {% with mail="mailto:"|add:host.email %} 
+              <a class="btn-danger btn-lg " href={{mail|add:"?subject=IWantThisCrib!"}} role="button">I want this Crib!</a>
+          {% endwith %}  
+
+        </p>
+      </div>
+      </div>
+
+
+<div class="carousel-info">
+
+
+</div><!-- /.container -->
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
